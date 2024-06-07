@@ -161,12 +161,12 @@ public class GameController {
 		consoleController.slowPrint("You found an old lady. She appears to be friendly", delay);
 		consoleController.slowPrint("Do you want to buy somethin?", delay);
 		String answerBuy = consoleController.readConsole().strip().toLowerCase();
-		if (answerBuy.equals("yes")) {
+		if (answerIsYes(answerBuy)) {
 			buyProcess();
 		}
 		consoleController.slowPrint("Do you want to sell somethin?", delay);
 		String answerSell = consoleController.readConsole().strip().toLowerCase();
-		if (answerSell.equals("yes")) {
+		if (answerIsYes(answerSell)) {
 			sellProcess();
 		}
 		consoleController.slowPrint("You say bye to the old lady and leave.", delay);
@@ -193,7 +193,7 @@ public class GameController {
 		}
 		consoleController.slowPrint("Do you want to sell somethin?", delay);
 		String answerSellAgain = consoleController.readConsole().strip().toLowerCase();
-		if (answerSellAgain.equals("yes")) {
+		if (answerIsYes(answerSellAgain)) {
 			sellProcess();
 		}
 	}
@@ -204,7 +204,7 @@ public class GameController {
 		consoleController.slowPrint(itemForSale.getDisplayName() + " for " + itemForSale.getPrice(), delay);
 		consoleController.slowPrint("Buy it?", delay);
 		String answerBuyIt = consoleController.readConsole().strip().toLowerCase();
-		if (answerBuyIt.equals("yes")) {
+		if (answerIsYes(answerBuyIt)) {
 			consoleController.slowPrint(player.buyItem(itemForSale), delay);
 		}
 	}
@@ -318,7 +318,7 @@ public class GameController {
 		consoleController.slowPrint("You encounter " + kindEnemies.toString(), delay);
 		consoleController.slowPrint("Do you want to flee?", delay);
 		String answer = consoleController.readConsole().strip().toLowerCase();
-		if (answer.equals("yes")) {
+		if (answerIsYes(answer)) {
 			boolean flee = randomizer.getRandomBoolean(20);
 			if (flee) {
 				consoleController.slowPrint("You fleed", delay);
@@ -330,6 +330,10 @@ public class GameController {
 		fight(currentField);
 	}
 
+	private boolean answerIsYes(String answer) {
+		return answer.equals("yes");
+	}
+
 	private void fight(BasisFeld currentField) {
 		FightEvent currentEvent = (FightEvent) currentField.getEvent();
 		while (!currentEvent.isDefeated()) {
@@ -339,7 +343,7 @@ public class GameController {
 				consoleController.slowPrint("Bullet count: " + player.getCount(ItemsEnum.BULLET), delay);
 				consoleController.slowPrint("Do you want to shoot at them?", delay);
 				String answer = consoleController.readConsole().strip().toLowerCase();
-				if (answer.equals("yes")) {
+				if (answerIsYes(answer)) {
 					player.useItem(ItemsEnum.BULLET);
 					randomDmg = randomizer.getRandomIntFromRange(5, 15);
 					consoleController.slowPrint("You shoot!", delay);
