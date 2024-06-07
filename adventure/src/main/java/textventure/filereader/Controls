@@ -1,0 +1,10 @@
+To move u use: n(North), w(West), s(South) and e(East)
+To get the controls: controls
+To get your hp and hunger status: status
+To search your current position: search
+To open your inventory: inventory
+To eat an item: eat itemname
+Yes/No question: yes, no
+Number question: 1,2,3,....
+get Money; money
+What do you want to sell?: itemname
