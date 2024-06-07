@@ -1,8 +1,5 @@
 package textventure.controllers;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -36,20 +33,20 @@ public class GameController {
 	}
 
 	private void startGame() {
-		displayWelcomeMessage();
-		displayBorder();
+		consoleController.displayWelcomeMessage();
+		consoleController.displayBorder();
 		consoleController.slowPrint("Please enter your name.", delay);
 		player.setName(consoleController.readConsole());
-		displayBorder();
-		displayControlls();
-		displayBorder();
+		consoleController.displayBorder();
+		consoleController.displayControlls();
+		consoleController.displayBorder();
 		displayHighscore();
-		displayBorder();
+		consoleController.displayBorder();
 		while (!gameWon && alive) {
 			descripeField();
 			playerAction();
 		}
-		displayBorder();
+		consoleController.displayBorder();
 		consoleController.slowPrint("Thanks for playing!", delay);
 		if (gameWon) {
 			highscoreManager.addHighscore(player.getName(), stepCount);
@@ -70,7 +67,7 @@ public class GameController {
 	private void playerAction() {
 		consoleController.slowPrint("What do you want to do?", delay);
 		String action = consoleController.readConsole();
-		displayBorder();
+		consoleController.displayBorder();
 		if (checkIfCommand(action)) {
 			action = action.strip();
 			if (action.contains(" ")) {
@@ -100,7 +97,7 @@ public class GameController {
 			actionEast();
 			break;
 		case "controls":
-			displayControlls();
+			consoleController.displayControlls();
 			break;
 		case "status":
 			displayStatus();
@@ -153,8 +150,8 @@ public class GameController {
 	}
 
 	private void gameWon() {
-		displayBorder();
-		displayBorder();
+		consoleController.displayBorder();
+		consoleController.displayBorder();
 		consoleController.slowPrint("You used the joystick and escaped with the helicopter!", delay);
 		consoleController.slowPrint("You WON!", delay);
 		gameWon = true;
@@ -240,7 +237,7 @@ public class GameController {
 	}
 
 	private void displayStatus() {
-		displayBorder();
+		consoleController.displayBorder();
 		consoleController.slowPrint(player.getStatus(), delay);
 	}
 
@@ -356,7 +353,7 @@ public class GameController {
 			}
 			currentEvent.decreasehp(randomDmg);
 			if (!currentEvent.isDefeated()) {
-				displayBorder();
+				consoleController.displayBorder();
 				consoleController.slowPrint("Enemy is still alive. They attack.", delay);
 				randomDmg = randomizer.GetRandomIntFromRange(5, 10);
 				player.decreaseHp(randomDmg);
@@ -420,31 +417,4 @@ public class GameController {
 		return false;
 	}
 
-	private void displayControlls() {
-		try (BufferedReader reader = new BufferedReader(
-				new FileReader("src/main/java/textventure/filereader/Controls"))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				consoleController.slowPrint(line, delay);
-			}
-		} catch (IOException e) {
-			System.out.println("Error reading welcome message file: " + e.getMessage());
-		}
-	}
-
-	private void displayBorder() {
-		consoleController.slowPrint("-----------------------------------------", delay);
-	}
-
-	private void displayWelcomeMessage() {
-		try (BufferedReader reader = new BufferedReader(
-				new FileReader("src/main/java/textventure/filereader/WelcomeMessage"))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				consoleController.slowPrint(line, delay);
-			}
-		} catch (IOException e) {
-			System.out.println("Error reading welcome message file: " + e.getMessage());
-		}
-	}
 }
