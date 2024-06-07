@@ -50,10 +50,4 @@ public class testBasisFeld {
 		assertFalse(basisFeld.isSearched());
 	}
 
-	@Test
-	public void testInitialState() {
-		assertEquals(testEvent, basisFeld.getEvent());
-		assertEquals(testDescription, basisFeld.getDescription());
-		assertFalse(basisFeld.isSearched());
-	}
 }

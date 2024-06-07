@@ -20,26 +20,25 @@ public class Map {
 	private EnemiesEnum[] enemiesKinds = EnemiesEnum.values();
 	private int[] startCoords = new int[2];
 	private int[] goalCoords = new int[2];
-	private BasisFeld[][] map = generateMap(mapSize);
+	private BasisFeld[][] gameMap = generateMap(mapSize);
 
 	private BasisFeld[][] generateMap(int size) {
 		BasisFeld[][] mapInitial = new BasisFeld[size][size];
 		for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                mapInitial[i][j] = randomEvent();
-            }
-        }
-		BasisFeld[][] mapFinal = generateSpecialFields(mapInitial);
-		return mapFinal;
+			for (int j = 0; j < size; j++) {
+				mapInitial[i][j] = randomEvent();
+			}
+		}
+		return generateSpecialFields(mapInitial);
 	}
 
 	private BasisFeld[][] generateSpecialFields(BasisFeld[][] mapInitial) {
 		boolean isSame = true;
-		startCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length-1);
-		startCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length-1);
+		startCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
+		startCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
 		while (isSame) {
-			goalCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length-1);
-			goalCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length-1);
+			goalCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
+			goalCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
 			if (!(startCoords[0] == goalCoords[0] && startCoords[1] == goalCoords[1])) {
 				isSame = false;
 			}
@@ -59,6 +58,9 @@ public class Map {
 		case 1:
 			generatedFeld.setEvent(generateBasisEvent());
 			break;
+		default:
+			generatedFeld.setEvent(generateBasisEvent());
+			break;
 		}
 		return generatedFeld;
 	}
@@ -73,11 +75,11 @@ public class Map {
 
 	private FightEvent generateFightEvent() {
 		return new FightEvent(fileReaderFight.getLine(),
-				enemiesKinds[randomizer.GetRandomIntFromRange(0, enemiesKinds.length-1)], randomizer.GetRandomBoolean(50),
-				randomizer.GetRandomIntFromRange(10, 30));
+				enemiesKinds[randomizer.GetRandomIntFromRange(0, enemiesKinds.length - 1)],
+				randomizer.GetRandomBoolean(50), randomizer.GetRandomIntFromRange(10, 30));
 	}
-	
+
 	public BasisFeld getFieldFromPosition(int x, int y) {
-		return map[x][y];
+		return gameMap[x][y];
 	}
 }

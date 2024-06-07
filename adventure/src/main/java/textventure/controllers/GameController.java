@@ -114,6 +114,8 @@ public class GameController {
 		case "money":
 			actionMoney();
 			break;
+		default:
+			break;
 		}
 	}
 
@@ -215,8 +217,7 @@ public class GameController {
 		if (player.hasItem(ItemsEnum.PISTOL)) {
 			range -= 1;
 		}
-		ItemsEnum randomItem = ItemsEnum.values()[randomizer.GetRandomIntFromRange(0, range)];
-		return randomItem;
+		return ItemsEnum.values()[randomizer.GetRandomIntFromRange(0, range)];
 	}
 
 	private void findRandomItem() {

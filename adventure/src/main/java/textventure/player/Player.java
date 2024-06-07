@@ -42,10 +42,7 @@ public class Player {
 
 	public boolean useItem(ItemsEnum item) {
 		if (inventory.hasItem(item)) {
-			if (inventory.decrease(item, 1)) {
-				return true;
-			}
-			return false;
+			return inventory.decrease(item, 1);
 		} else {
 			return false;
 		}

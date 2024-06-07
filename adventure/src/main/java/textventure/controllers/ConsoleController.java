@@ -7,8 +7,7 @@ public class ConsoleController {
 
 	public String readConsole() {
 		System.out.print("Enter something: ");
-		String userInput = scanner.nextLine();
-		return userInput;
+		return scanner.nextLine();
 	}
 
 	public void slowPrint(String message, int delay) {
@@ -17,9 +16,9 @@ public class ConsoleController {
 				System.out.print(c);
 				Thread.sleep(delay);
 			}
-			System.out.println();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
+	        e.printStackTrace();
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class testMap {
 	@Test
 	public void testMapSize() {
 		Map map = new Map();
-		BasisFeld[][] generatedMap = map.getMap();
+		BasisFeld[][] generatedMap = map.getGameMap();
 
 		assertEquals(50, generatedMap.length);
 		assertEquals(50, generatedMap[0].length);
@@ -21,7 +21,7 @@ public class testMap {
 	@Test
 	public void testStartAndEndFields() {
 		Map map = new Map();
-		BasisFeld[][] generatedMap = map.getMap();
+		BasisFeld[][] generatedMap = map.getGameMap();
 		int[] startCoords = map.getStartCoords();
 		int[] goalCoords = map.getGoalCoords();
 
@@ -32,7 +32,7 @@ public class testMap {
 	@Test
 	public void testRandomlyGeneratedEvents() {
 		Map map = new Map();
-		BasisFeld[][] generatedMap = map.getMap();
+		BasisFeld[][] generatedMap = map.getGameMap();
 
 		for (int i = 0; i < generatedMap.length; i++) {
 			for (int j = 0; j < generatedMap[0].length; j++) {
