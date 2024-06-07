@@ -3,6 +3,7 @@ package textventure.controllers;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import lombok.Setter;
 import textventure.enums.EnemiesEnum;
 import textventure.enums.ItemsEnum;
 import textventure.events.FightEvent;
@@ -15,6 +16,7 @@ import textventure.map.StartFeld;
 import textventure.player.Player;
 import textventure.randomizer.Randomizer;
 
+@Setter
 public class GameController {
 	private ConsoleController consoleController = new ConsoleController();
 	private Player player = new Player();
@@ -27,12 +29,7 @@ public class GameController {
 	private Randomizer randomizer = new Randomizer();
 	private HighscoreManager highscoreManager = new HighscoreManager();
 
-	public static void main(String[] args) {
-		GameController gameController = new GameController();
-		gameController.startGame();
-	}
-
-	private void startGame() {
+	public void startGame() {
 		consoleController.displayWelcomeMessage();
 		consoleController.displayBorder();
 		consoleController.slowPrint("Please enter your name.", delay);

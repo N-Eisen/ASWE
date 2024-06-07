@@ -19,6 +19,7 @@ public class ConsoleController {
 				System.out.print(c);
 				Thread.sleep(delay);
 			}
+			System.out.println();
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
