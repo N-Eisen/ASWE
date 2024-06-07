@@ -141,7 +141,7 @@ public class GameController {
 		} else {
 			consoleController.slowPrint(currentField.getEvent().getMessage(), delay);
 			currentField.setSearched(true);
-			if (randomizer.GetRandomBoolean(10)) {
+			if (randomizer.getRandomBoolean(10)) {
 				findSalesperson();
 			} else {
 				findRandomItem();
@@ -214,11 +214,11 @@ public class GameController {
 		if (player.hasItem(ItemsEnum.PISTOL)) {
 			range -= 1;
 		}
-		return ItemsEnum.values()[randomizer.GetRandomIntFromRange(0, range)];
+		return ItemsEnum.values()[randomizer.getRandomIntFromRange(0, range)];
 	}
 
 	private void findRandomItem() {
-		if (!player.isJoystick() && randomizer.GetRandomBoolean(5)) {
+		if (!player.isJoystick() && randomizer.getRandomBoolean(5)) {
 			consoleController.slowPrint("You found an old joystick!", delay);
 			player.foundJoystick();
 		} else {
@@ -227,7 +227,7 @@ public class GameController {
 			if (randomItem.equals(ItemsEnum.PISTOL)) {
 				count = 1;
 			} else {
-				count = randomizer.GetRandomIntFromRange(1, 10);
+				count = randomizer.getRandomIntFromRange(1, 10);
 			}
 			consoleController.slowPrint(randomItem.getDisplayName(), delay);
 			consoleController.slowPrint("Count: " + count, delay);
@@ -319,7 +319,7 @@ public class GameController {
 		consoleController.slowPrint("Do you want to flee?", delay);
 		String answer = consoleController.readConsole().strip().toLowerCase();
 		if (answer.equals("yes")) {
-			boolean flee = randomizer.GetRandomBoolean(20);
+			boolean flee = randomizer.getRandomBoolean(20);
 			if (flee) {
 				consoleController.slowPrint("You fleed", delay);
 			} else {
@@ -341,21 +341,21 @@ public class GameController {
 				String answer = consoleController.readConsole().strip().toLowerCase();
 				if (answer.equals("yes")) {
 					player.useItem(ItemsEnum.BULLET);
-					randomDmg = randomizer.GetRandomIntFromRange(5, 15);
+					randomDmg = randomizer.getRandomIntFromRange(5, 15);
 					consoleController.slowPrint("You shoot!", delay);
 				} else {
 					consoleController.slowPrint("You attack with your fists.", delay);
-					randomDmg = randomizer.GetRandomIntFromRange(5, 10);
+					randomDmg = randomizer.getRandomIntFromRange(5, 10);
 				}
 			} else {
 				consoleController.slowPrint("You attack with your fists.", delay);
-				randomDmg = randomizer.GetRandomIntFromRange(5, 10);
+				randomDmg = randomizer.getRandomIntFromRange(5, 10);
 			}
 			currentEvent.decreasehp(randomDmg);
 			if (!currentEvent.isDefeated()) {
 				consoleController.displayBorder();
 				consoleController.slowPrint("Enemy is still alive. They attack.", delay);
-				randomDmg = randomizer.GetRandomIntFromRange(5, 10);
+				randomDmg = randomizer.getRandomIntFromRange(5, 10);
 				player.decreaseHp(randomDmg);
 				consoleController.slowPrint("You took damage " + randomDmg, delay);
 				if (player.getHp() <= 0) {

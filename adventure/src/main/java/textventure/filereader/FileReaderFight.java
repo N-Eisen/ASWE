@@ -24,7 +24,7 @@ public class FileReaderFight {
 		}
 
 		if (!lines.isEmpty()) {
-			return lines.get(randomizer.GetRandomIntFromRange(0, lines.size()-1));
+			return lines.get(randomizer.getRandomIntFromRange(0, lines.size()-1));
 		} else {
 			return "The file FightDescriptions is empty or could not be read.";
 		}

@@ -34,11 +34,11 @@ public class Map {
 
 	private BasisFeld[][] generateSpecialFields(BasisFeld[][] mapInitial) {
 		boolean isSame = true;
-		startCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
-		startCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
+		startCoords[0] = randomizer.getRandomIntFromRange(0, mapInitial.length - 1);
+		startCoords[1] = randomizer.getRandomIntFromRange(0, mapInitial.length - 1);
 		while (isSame) {
-			goalCoords[0] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
-			goalCoords[1] = randomizer.GetRandomIntFromRange(0, mapInitial.length - 1);
+			goalCoords[0] = randomizer.getRandomIntFromRange(0, mapInitial.length - 1);
+			goalCoords[1] = randomizer.getRandomIntFromRange(0, mapInitial.length - 1);
 			if (!(startCoords[0] == goalCoords[0] && startCoords[1] == goalCoords[1])) {
 				isSame = false;
 			}
@@ -49,9 +49,9 @@ public class Map {
 	}
 
 	private BasisFeld randomEvent() {
-		int RandomInt = randomizer.GetRandomIntFromRange(0, 1);
+		int randomInt = randomizer.getRandomIntFromRange(0, 1);
 		BasisFeld generatedFeld = new BasisFeld(new NothingEvent("Nothing to see here"), generateFieldDescription());
-		switch (RandomInt) {
+		switch (randomInt) {
 		case 0:
 			generatedFeld.setEvent(generateFightEvent());
 			break;
@@ -75,8 +75,8 @@ public class Map {
 
 	private FightEvent generateFightEvent() {
 		return new FightEvent(fileReaderFight.getLine(),
-				enemiesKinds[randomizer.GetRandomIntFromRange(0, enemiesKinds.length - 1)],
-				randomizer.GetRandomBoolean(50), randomizer.GetRandomIntFromRange(10, 30));
+				enemiesKinds[randomizer.getRandomIntFromRange(0, enemiesKinds.length - 1)],
+				randomizer.getRandomBoolean(50), randomizer.getRandomIntFromRange(10, 30));
 	}
 
 	public BasisFeld getFieldFromPosition(int x, int y) {

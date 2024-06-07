@@ -4,6 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum EnemiesEnum {
-	Frog, Human, Goblin, OldGuy, Wolf, Ork, Cat;
+	FROG, HUMAN, GOBLIN, OLDGUY, WOLF, ORK, CAT;
 
 }

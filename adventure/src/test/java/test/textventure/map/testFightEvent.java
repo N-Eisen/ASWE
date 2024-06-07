@@ -13,7 +13,7 @@ public class testFightEvent {
 
 	@Test
 	public void testDefeated() {
-		FightEvent fightEvent = new FightEvent("A fierce battle!", EnemiesEnum.Goblin, true, 50);
+		FightEvent fightEvent = new FightEvent("A fierce battle!", EnemiesEnum.GOBLIN, true, 50);
 
 		assertFalse(fightEvent.isDefeated());
 
@@ -24,7 +24,7 @@ public class testFightEvent {
 
 	@Test
 	public void testDecreaseHp() {
-		FightEvent fightEvent = new FightEvent("A fierce battle!", EnemiesEnum.Goblin, true, 50);
+		FightEvent fightEvent = new FightEvent("A fierce battle!", EnemiesEnum.GOBLIN, true, 50);
 
 		fightEvent.decreasehp(20);
 

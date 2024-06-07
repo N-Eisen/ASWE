@@ -12,7 +12,7 @@ public class TestRandomizerInteger {
 		int max = 10;
 
 		for (int i = 0; i < 100; i++) {
-			int result = randomizer.GetRandomIntFromRange(min, max);
+			int result = randomizer.getRandomIntFromRange(min, max);
 			assertTrue(result >= min && result <= max);
 		}
 	}
@@ -23,7 +23,7 @@ public class TestRandomizerInteger {
 		int min = 5;
 		int max = 5;
 
-		int result = randomizer.GetRandomIntFromRange(min, max);
+		int result = randomizer.getRandomIntFromRange(min, max);
 		assertEquals(min, result);
 	}
 
@@ -34,7 +34,7 @@ public class TestRandomizerInteger {
 		int max = -1;
 
 		for (int i = 0; i < 100; i++) {
-			int result = randomizer.GetRandomIntFromRange(min, max);
+			int result = randomizer.getRandomIntFromRange(min, max);
 			assertTrue(result >= min && result <= max);
 		}
 	}
@@ -46,7 +46,7 @@ public class TestRandomizerInteger {
 		int max = 5;
 
 		assertThrows(IllegalArgumentException.class, () -> {
-			randomizer.GetRandomIntFromRange(min, max);
+			randomizer.getRandomIntFromRange(min, max);
 		});
 	}
 
@@ -58,7 +58,7 @@ public class TestRandomizerInteger {
 		int falses = 0;
 		// Run the test multiple times to cover the randomness
 		for (int i = 0; i < 1000; i++) {
-			boolean result = randomizer.GetRandomBoolean(percentTrue);
+			boolean result = randomizer.getRandomBoolean(percentTrue);
 			if (result) {
 				trues++;
 			}else {
@@ -76,7 +76,7 @@ public class TestRandomizerInteger {
 		int falses = 0;
 		// Run the test multiple times to cover the randomness
 		for (int i = 0; i < 1000; i++) {
-			boolean result = randomizer.GetRandomBoolean(percentTrue);
+			boolean result = randomizer.getRandomBoolean(percentTrue);
 			if (result) {
 				trues++;
 			}else {
